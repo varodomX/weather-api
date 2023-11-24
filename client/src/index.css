@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.map-label {
+  position: absolute;
+  bottom: 0;left: -50%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.map-label-content {
+  order: 1;
+  position: relative; left: -50%;
+  background-color: #2ecc71; /* Default color (green) for temperatures <= 20 */
+  border-radius: 5px;
+  border-width: 2px;
+  border-style: solid;
+  padding: 3px;
+  white-space: nowrap;
+}
+
+.map-label-content.orange {
+  background-color: #f39c12; /* Orange color for temperatures > 25 */
+}
+
+.map-label-content.red {
+  background-color: #e74c3c; /* Red color for temperatures > 30 */
+}
+
+.map-label-content.yellow {
+  background-color: #f2ff00; /* Yellow color for temperatures > 20 */
+}
