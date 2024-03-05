@@ -20,7 +20,7 @@ const [data,setData] = useState([])
         .then((res)=>{
             console.log(res)
             setData(res.data)
-            
+
             
         })
         .catch((err)=>console.log(err))

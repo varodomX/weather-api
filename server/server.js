@@ -1,33 +1,33 @@
-const express = require("express");
+const express = require("express")
+const request = require('request');
+const morgan = require("morgan")
+const cors = require("cors")
+const bodyParse = require("body-parser")
 
-const morgan = require("morgan");
-const cors = require("cors");
-const bodyParse = require("body-parser");
+//const connectDB = require("./Config/db");
 
-const connectDB = require("./Config/db");
-
-const { readdirSync } = require("fs");
+const { readdirSync } = require("fs")
 // const productRouters = require('./Routes/product')
 // const authRouters = require('./Routes/auth')
 
 const app = express();
-app.use(
-  cors({
-    origin: "http://localhost:3000/",
-    methods: ["GET", "POST"],
-  })
-);
-connectDB();
+//connectDB();
 
-app.use(morgan("dev"));
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+};
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.Header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.Header("Access-Control-Allow-Headers", "Content-Type");
-  res.Header("Access-Control-Allow-Credentials", true);
+app.use(cors(corsOptions));
+app.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*'); //หรือใส่แค่เฉพาะ domain ที่ต้องการได้
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
 });
-app.use(bodyParse.json({ limit: "10mb" }));
+app.use(morgan("dev"));
+app.use(bodyParse.json());
 
 // Route 1
 // app.get('/product', (req, res) => {

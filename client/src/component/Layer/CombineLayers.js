@@ -23,14 +23,7 @@ const CombineLayers = () => {
             <PointOf/>
         </LayersControl.Overlay>
 
-        <LayersControl.Overlay name='weather' checked>
-          <LayerGroup>
-            <WeatherTodayLayers/>
-          </LayerGroup>
-            
-        </LayersControl.Overlay>
-
-        <LayersControl.Overlay name='weather 3 hr' >
+        <LayersControl.Overlay name='weather 3 hr' checked>
           <LayerGroup>
             <Weather3hr />
           </LayerGroup>
